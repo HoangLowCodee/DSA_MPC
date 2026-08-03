@@ -1,0 +1,23 @@
+
+ifstream là cin nhưng đọc từ file
+ofstream là cout nhưng ghi ra file
+
+SinhVien tensv, masv, gpa....
+
+data.txt
+    1
+    2
+    3
+
+cin >> a ;
+inFile >> a;
+
+ifstream -> input -> cin
+ofstream -> output -> cout
+
+Các bước thao tác với file:
+1. Khai báo biến ifstream hoặc ofstream
+2. Mở file
+3. Kiểm tra file có mở thành công không
+4. Thao tác với file -> đọc hoặc ghi
+5. Đóng file

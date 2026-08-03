@@ -1,31 +1,31 @@
 10
 1001
 Nguyen Van Anh
-3.85
+3.95
 1002
 Tran Thi Bao
-3.2
+3.3
 1003
 Le Hoang Cuong
-2.75
+2.85
 1004
 Pham Phuong Dung
-3.9
+4
 1005
 Vo Minh Em
-1.8
+1.9
 1006
 Dang Gia Gia
-3.45
+3.55
 1007
 Bui Thu Ha
-2.1
+2.2
 1008
 Ngo Quoc Hung
-0.95
+1.05
 1009
 Trinh Thi Khanh
-3.6
+3.7
 1010
 Doan Van Lam
 2.9
