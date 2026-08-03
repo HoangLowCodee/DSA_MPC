@@ -14,10 +14,10 @@ struct SinhVien
 struct Node
 {
     SinhVien data;
-    Node *next = nullptr;
+    Node* next = nullptr;
 };
 
-void nhapdulieu(SinhVien &sv)
+void nhapdulieu(SinhVien& sv)
 {
     cout << "Nhap ma sinh vien: ";
     cin >> sv.maSV;
@@ -32,39 +32,39 @@ void nhapdulieu(SinhVien &sv)
 }
 
 // Khởi tạo
-void init(Node *&head)
+void init(Node*& head)
 {
     head = nullptr;
 }
 
 // Tạo node
-Node *createNode(SinhVien data)
+Node* createNode(SinhVien data)
 {
-    Node *node = new Node();
+    Node* node = new Node();
     node->data = data;
     node->next = nullptr;
     return node;
 }
 
 // Thêm đầu
-void addHead(Node *&head, SinhVien data)
+void addHead(Node*& head, SinhVien data)
 {
-    Node *p = createNode(data);
+    Node* p = createNode(data);
     p->next = head;
     head = p;
 }
 
 // Thêm cuối
-void addTail(Node *&head, SinhVien data)
+void addTail(Node*& head, SinhVien data)
 {
-    Node *p = createNode(data);
+    Node* p = createNode(data);
     if (head == nullptr)
     {
         head = p;
         return;
     }
 
-    Node *q = head;
+    Node* q = head;
     while (q->next != nullptr)
     {
         q = q->next;
@@ -73,7 +73,7 @@ void addTail(Node *&head, SinhVien data)
 }
 
 // Đếm số lượng phần tử 
-int lengthList(Node *head)
+int lengthList(Node* head)
 {
     int length = 0;
     while (head != nullptr)
@@ -85,7 +85,7 @@ int lengthList(Node *head)
 }
 
 // Tìm kiếm theo mssv
-Node* timKiem(Node *head, int maSV) 
+Node* timKiem(Node* head, int maSV)
 {
     while (head != nullptr) {
         if (head->data.maSV == maSV) {
@@ -97,16 +97,16 @@ Node* timKiem(Node *head, int maSV)
 }
 
 // Thêm vào vị trí x 
-void addIdx(Node *&head, int x, SinhVien data)
+void addIdx(Node*& head, int x, SinhVien data)
 {
     if (x == 0) {
         addHead(head, data);
         return;
     }
 
-    Node *q = head;
+    Node* q = head;
     int idx = 0;
-    
+
     // Tìm vị trí phía trước vị trí x
     while (q != nullptr && idx != x - 1)
     {
@@ -116,53 +116,53 @@ void addIdx(Node *&head, int x, SinhVien data)
 
     if (q != nullptr)
     {
-        Node *p = createNode(data);
+        Node* p = createNode(data);
         p->next = q->next;
         q->next = p;
     }
 }
 
 // Thêm sau một sinh viên có mã maSV_tim
-void addAfter(Node *&head, int maSV_tim, SinhVien data)
+void addAfter(Node*& head, int maSV_tim, SinhVien data)
 {
-    Node *q = head;
+    Node* q = head;
     // Tìm sinh viên có maSV tương ứng
     while (q != nullptr && q->data.maSV != maSV_tim)
         q = q->next;
 
     if (q != nullptr)
     {
-        Node *p = createNode(data);
+        Node* p = createNode(data);
         p->next = q->next;
         q->next = p;
     }
     else cout << "Khong tim thay sinh vien co ma: " << maSV_tim << endl;
-} 
+}
 
 // Xóa đầu 
-void delHead(Node *&head)
+void delHead(Node*& head)
 {
-    if (head == nullptr) return; 
-    
-    Node *p = head;
+    if (head == nullptr) return;
+
+    Node* p = head;
     head = head->next;
     delete p;
 }
 
 // Xóa cuối 
-void delTail(Node *&head)
+void delTail(Node*& head)
 {
-    if (head == nullptr) return; 
-    
-    if (head->next == nullptr) 
+    if (head == nullptr) return;
+
+    if (head->next == nullptr)
     {
         delete head;
         head = nullptr;
         return;
     }
 
-    Node *p = head;
-    Node *q = nullptr;
+    Node* p = head;
+    Node* q = nullptr;
 
     while (p->next != nullptr)
     {
@@ -174,48 +174,48 @@ void delTail(Node *&head)
     delete p;
 }
 
-void delX(Node *&head, int idx)
+void delX(Node*& head, int idx)
 {
     int length = lengthList(head);
-    if (idx < 0 || idx >= length) 
+    if (idx < 0 || idx >= length)
     {
         cout << "Vi tri khong hop le!" << endl;
         return;
     }
 
-    if (idx == 0
+    if (idx == 0)
     {
         delHead(head);
         return;
     }
 
-    Node *p = head;
-    Node *q = nullptr;
-    int index = 0;
+    Node* p = head;
+        Node* q = nullptr;
+        int index = 0;
 
-    while (p != nullptr && index != idx)
-    {
-        q = p;
-        index++;
-        p = p->next;
-    }
+        while (p != nullptr && index != idx)
+        {
+            q = p;
+            index++;
+            p = p->next;
+        }
 
     q->next = p->next;
     delete p;
 }
 
-void clear(Node *&head)
+void clear(Node*& head)
 {
     while (head != nullptr)
     {
-        Node *temp = head;
+        Node* temp = head;
         head = head->next;
         delete temp; // Xóa từng node một
     }
 }
 
 // In danh sách liên kết
-void printList(Node *head)
+void printList(Node* head)
 {
     if (head == nullptr) {
         cout << "Danh sach trong!" << endl;
@@ -225,9 +225,9 @@ void printList(Node *head)
     while (head != nullptr)
     {
         cout << "MaSV: " << head->data.maSV << endl
-             << "Ten: " << head->data.name << endl
-             << "Tuoi: " << head->data.age << endl
-             << "Que Quan: " << head->data.queQuan << endl;
+            << "Ten: " << head->data.name << endl
+            << "Tuoi: " << head->data.age << endl
+            << "Que Quan: " << head->data.queQuan << endl;
         head = head->next;
     }
     cout << "------------------------------------------" << endl;
@@ -235,19 +235,20 @@ void printList(Node *head)
 
 int main()
 {
-  
-    SinhVien sv1 = {101, "Le Nguyen Van Anh", 20, "Ho Chi Minh"};
-    SinhVien sv2 = {102, "Nguyen Duy Hoang", 20, "Dong Nai"};
-    SinhVien sv3 = {103, "Phan Thi Khanh An", 18, "Gia Lai"};
-    SinhVien sv4 = {104, "Nguyen Thanh Trieu", 22, "Tien Giang"};
+
+	Node* head= new Node();
+    SinhVien sv1 = { 101, "Le Nguyen Van Anh", 20, "Ho Chi Minh" };
+    SinhVien sv2 = { 102, "Nguyen Duy Hoang", 20, "Dong Nai" };
+    SinhVien sv3 = { 103, "Phan Thi Khanh An", 18, "Gia Lai" };
+    SinhVien sv4 = { 104, "Nguyen Thanh Trieu", 22, "Tien Giang" };
 
     addTail(head, sv1);
     addTail(head, sv2);
     addTail(head, sv3);
-    
+
     cout << "Danh sach sau khi them 3 sinh vien: " << endl;
     printList(head);
-    
+
     cout << "So Luong Phan Tu: " << lengthList(head) << endl;
 
     cout << "\nChen SV4 vao sau SV co ma 102:" << endl;
@@ -257,7 +258,7 @@ int main()
     cout << "\nXoa sinh vien o vi tri index = 2:" << endl;
     delX(head, 2);
     printList(head);
-    
+
     clear(head);
     return 0;
 }
