@@ -1,11 +1,15 @@
 Danh Sách Liên Kết (Linked List) Quản lý Sinh Viên (SinhVien MonHoc Khoa )
 Struct lồng Struct
+Stack - Queue
 Cây Cân bằng AVL
 Cây Tìm kiếm Nhị phân (Binary Search Tree)
 Bảng Băm (Hash Table) Từ điển Tiếng Anh - Việt
 Đồ Thị (Graph)
 Tìm kiếm theo Chiều sâu (DFS) và Chiều rộng (BFS)
 Tìm đường đi kruskal , Prim, Dijkstra, Bellman-Ford
+
+leetcode
+- revertList
 
 => hệ thống quản lý
 1. Quản Lý Sinh Viên
@@ -18,3 +22,24 @@ Tìm đường đi kruskal , Prim, Dijkstra, Bellman-Ford
 
 Khởi Tạo danh sách liên kết
 Thêm đầu, thêm cuối, thêm giữa (theo vị trí và theo giá trị)
+
+
+git clone https://github.com/HoangLowCodee/DSA_MPC.git
+
+
+git clone https://github.com/HoangLowCodee/DSA_MPC.git
+
+git checkout -b DuyHoang
+
+git add .
+git commit
+git push origin 
+
+git config -- 
+
+git pull MPC
+
+git clone lấy từ đầu
+git pull 
+
+git checkout -b 

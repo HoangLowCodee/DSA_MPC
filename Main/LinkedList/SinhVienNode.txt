@@ -1,0 +1,31 @@
+10
+1001
+Nguyen Van Anh
+3.85
+1002
+Tran Thi Bao
+3.20
+1003
+Le Hoang Cuong
+2.75
+1004
+Pham Phuong Dung
+3.90
+1005
+Vo Minh Em
+1.80
+1006
+Dang Gia Gia
+3.45
+1007
+Bui Thu Ha
+2.10
+1008
+Ngo Quoc Hung
+0.95
+1009
+Trinh Thi Khanh
+3.60
+1010
+Doan Van Lam
+2.90

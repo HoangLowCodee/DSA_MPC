@@ -1,0 +1,84 @@
+========== Quản Lý Danh Sách Sinh Viên ==========
+
+struct SinhVien{
+    int mssv (lưu ý dùng longlong nếu  mssv dài)
+    string name (Lấy full name)
+    double GPA (Làm tròn 2 số thập phân -> sử dụng round(GPA * hệ số)/ hệ số )
+};
+
+- Yêu cầu các chức năng cơ bản
+    1. Thêm sinh viên
+    - Thêm vào đầu danh sách.  
+    - Thêm vào cuối danh sách.  
+    - Thêm vào vị trí bất kỳ (theo chỉ số hoặc sau một mã SV).  
+
+    2. Xóa sinh viên
+    - Xóa sinh viên đầu danh sách.  
+    - Xóa sinh viên cuối danh sách.  
+    - Xóa sinh viên theo mã SV.  
+
+    3. Tìm kiếm
+    - Tìm sinh viên theo mã SV.  
+    - Tìm sinh viên theo tên (có thể nhiều kết quả).  
+    - Tìm sinh viên có GPA cao nhất/thấp nhất.  
+
+    4. Xuất danh sách
+    - In toàn bộ danh sách sinh viên.  
+    - In danh sách sinh viên có GPA ≥ 3.0.  
+
+- Yêu cầu nâng cao
+
+    5. Sắp xếp
+    - Sắp xếp danh sách theo GPA giảm dần.  
+    - Sắp xếp theo tên (alphabet) -> BT Nâng Cao: xử lý cắt chuỗi tìm lastName.  
+    - Sắp xếp theo mã SV tăng dần.  
+    --- Note: Dạng nâng cao sẽ không sử dụng Swap
+
+    6. Thống kê
+    - Đếm số lượng sinh viên có GPA ≥ 3.0.  
+    - Liệt kê sinh viên có GPA cao nhất.  
+
+    7. Cập nhật
+    - Cập nhật thông tin sinh viên theo mã SV (ví dụ: đổi tên, đổi GPA).  
+    - Cập nhật toàn bộ GPA tăng thêm 0.1 (mô phỏng cộng điểm).  
+
+    8. File I/O
+    - Lưu danh sách sinh viên ra file.  
+    - Đọc danh sách sinh viên từ file.  
+    - Xuất danh sách sinh viên có GPA ≥ 3.0 ra file riêng.  
+
+    9. Tách/Gộp List
+    - Tách danh sách thành 2: danh sách sinh viên đạt (GPA ≥ 2.0) và không đạt.  
+    - Gộp 2 danh sách sinh viên lại thành một danh sách chung.  
+    - Xây dựng menu chương trình quản lý sinh viên (console menu).  
+
+
+========== Bài Tập bổ sung ==========
+
+Note: Bổ sung 1 struct Khoa và làm các yêu cầu sau
+
+    1. Quản lý khoa
+    - Thêm mới một khoa (maKhoa, tenKhoa).  
+    - Liệt kê toàn bộ sinh viên thuộc một khoa cụ thể.  
+    - Đếm số lượng sinh viên trong từng khoa.  
+    - Tìm khoa có nhiều sinh viên nhất.  
+
+    2. Tìm kiếm nâng cao
+    - Tìm sinh viên theo mã khoa.  
+    - Tìm sinh viên theo tên khoa.  
+    - Liệt kê tất cả sinh viên thuộc khoa "Công nghệ thông tin".  
+
+    3. Thống kê theo khoa
+    - Tính GPA trung bình của sinh viên trong từng khoa.  
+    - Liệt kê sinh viên có GPA cao nhất trong mỗi khoa.  
+    - So sánh GPA trung bình giữa các khoa.  
+
+    3. Sắp xếp theo khoa
+    - Sắp xếp danh sách sinh viên theo tên khoa.  
+    - Sắp xếp theo mã khoa, sau đó theo GPA giảm dần.  
+
+    5. File I/O nâng cao
+    - Lưu danh sách sinh viên kèm thông tin khoa ra file.  
+    - Đọc danh sách sinh viên từ file có chứa thông tin khoa.  
+    - Xuất danh sách sinh viên của từng khoa ra file riêng.  
+
