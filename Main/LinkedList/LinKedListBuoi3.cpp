@@ -65,7 +65,6 @@ Node *createNode(SinhVien data)
     return node;
 }
 
-
 // Thêm phần tử vào cuối danh sách liên kết
 void addTail(Node *&head, SinhVien data)
 {
@@ -249,7 +248,243 @@ void updateGPAAllData(Node *&head, double deltaGPA)
         curr->data.GPA = round(curr->data.GPA * 100) / 100; // làm tròn đến 2 chữ số thập phân
         curr = curr->next;
     }
+}
 
+void splitListByGPA(Node *head, Node *&list1, Node *&list2, double threshold)
+{
+    while (head != nullptr)
+    {
+        if (head->data.GPA >= threshold)
+        {
+            addTail(list1, head->data);
+        }
+        else
+        {
+            addTail(list2, head->data);
+        }
+        head = head->next;
+    }
+}
+
+// có 2 cách gộp list
+// 1. sort trước rồi gộp đặt tên hàm là SortAndMerge
+// 2. gộp trước rồi sort MergeAndSort
+
+void MergeAndSort(Node *&list1, Node *&list2, Node *&mergedList)
+{
+    // Gộp hai danh sách
+    Node *curr = list1;
+    while (curr != nullptr)
+    {
+        addTail(mergedList, curr->data);
+        curr = curr->next;
+    }
+
+    curr = list2;
+    while (curr != nullptr)
+    {
+        addTail(mergedList, curr->data);
+        curr = curr->next;
+    }
+
+    // Sắp xếp danh sách đã gộp theo GPA giảm dần
+    for (Node *i = mergedList; i != nullptr; i = i->next)
+    {
+        for (Node *j = i->next; j != nullptr; j = j->next)
+        {
+            if (i->data.GPA < j->data.GPA)
+            {
+                SinhVien temp = i->data;
+                i->data = j->data;
+                j->data = temp;
+            }
+        }
+    }
+}
+
+void interchangeSort(Node *&list)
+{
+    for (Node *i = list; i != nullptr; i = i->next)
+    {
+        for (Node *j = i->next; j != nullptr; j = j->next)
+        {
+            if (i->data.GPA < j->data.GPA)
+            {
+                SinhVien temp = i->data;
+                i->data = j->data;
+                j->data = temp;
+            }
+        }
+    }
+}
+
+void selectionSort(Node *&list)
+{
+    for (Node *i = list; i != nullptr; i = i->next)
+    {
+        Node *maxNode = i;
+        for (Node *j = i->next; j != nullptr; j = j->next)
+        {
+            if (j->data.GPA > maxNode->data.GPA)
+            {
+                maxNode = j;
+            }
+        }
+        if (maxNode != i)
+        {
+            SinhVien temp = i->data;
+            i->data = maxNode->data;
+            maxNode->data = temp;
+        }
+    }
+}
+
+void intertionSort(Node *&list)
+{
+    if (list == nullptr || list->next == nullptr)
+        return;
+
+    Node *sortedList = nullptr;
+
+    Node *current = list;
+    while (current != nullptr)
+    {
+        Node *nextNode = current->next;
+
+        if (sortedList == nullptr || current->data.GPA >= sortedList->data.GPA)
+        {
+            current->next = sortedList;
+            sortedList = current;
+        }
+        else
+        {
+            Node *temp = sortedList;
+            while (temp->next != nullptr && temp->next->data.GPA > current->data.GPA)
+            {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+
+        current = nextNode;
+    }
+
+    list = sortedList;
+}
+
+void bubbleSort(Node *&list)
+{
+    if (list == nullptr || list->next == nullptr)
+        return;
+
+    bool swapped;
+    do
+    {
+        swapped = false;
+        Node *current = list;
+        while (current->next != nullptr)
+        {
+            if (current->data.GPA < current->next->data.GPA)
+            {
+                SinhVien temp = current->data;
+                current->data = current->next->data;
+                current->next->data = temp;
+                swapped = true;
+            }
+            current = current->next;
+        }
+    } while (swapped);
+}
+
+
+void quickSort(Node *&list)
+{
+    if (list == nullptr || list->next == nullptr)
+        return;
+
+    Node *pivot = list;
+    Node *lessHead = nullptr;
+    Node *greaterHead = nullptr;
+
+    Node *current = list->next;
+    while (current != nullptr)
+    {
+        if (current->data.GPA >= pivot->data.GPA)
+        {
+            addTail(lessHead, current->data);
+        }
+        else
+        {
+            addTail(greaterHead, current->data);
+        }
+        current = current->next;
+    }
+
+    quickSort(lessHead);
+    quickSort(greaterHead);
+
+    // Gộp danh sách đã sắp xếp
+    if (lessHead != nullptr)
+    {
+        list = lessHead;
+        Node *temp = lessHead;
+        while (temp->next != nullptr)
+            temp = temp->next;
+        temp->next = pivot;
+    }
+    else
+    {
+        list = pivot;
+    }
+
+    pivot->next = greaterHead;
+}
+
+void sortAndMerge(Node *&list1, Node *&list2, Node *&mergedList)
+{
+    // Sắp xếp danh sách list1 theo GPA giảm dần
+    for (Node *i = list1; i != nullptr; i = i->next)
+    {
+        for (Node *j = i->next; j != nullptr; j = j->next)
+        {
+            if (i->data.GPA < j->data.GPA)
+            {
+                SinhVien temp = i->data;
+                i->data = j->data;
+                j->data = temp;
+            }
+        }
+    }
+
+    // Sắp xếp danh sách list2 theo GPA giảm dần
+    for (Node *i = list2; i != nullptr; i = i->next)
+    {
+        for (Node *j = i->next; j != nullptr; j = j->next)
+        {
+            if (i->data.GPA < j->data.GPA)
+            {
+                SinhVien temp = i->data;
+                i->data = j->data;
+                j->data = temp;
+            }
+        }
+    }
+
+    // Gộp hai danh sách đã sắp xếp
+    Node *curr = list1;
+    while (curr != nullptr)
+    {
+        addTail(mergedList, curr->data);
+        curr = curr->next;
+    }
+
+    curr = list2;
+    while (curr != nullptr)
+    {
+        addTail(mergedList, curr->data);
+        curr = curr->next;
+    }
 }
 
 int main()
@@ -267,8 +502,16 @@ int main()
     // updateData(head, mssv);
     updateGPAAllData(head, 0.1);
 
-
     outputFile(head, "SinhVienSave.txt");
+
+    Node *list1, *list2;
+    init(list1);
+    init(list2);
+    splitListByGPA(head, list1, list2, 3.0);
+    cout << "Danh Sach Sinh Vien Co GPA >= 3.0" << endl;
+    output(list1);
+    cout << "Danh Sach Sinh Vien Co GPA < 3.0" << endl;
+    output(list2);
 
     return 0;
 }
