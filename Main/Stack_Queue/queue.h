@@ -10,18 +10,11 @@ struct Queue
     int front, rear;
 };
 
-// front: vị trí đầu tiên của queue
-// rear: vị trí cuối cùng của queue
-// enqueue: thêm phần tử vào cuối queue
-// dequeue: xóa phần tử ở đầu queue
-
 void init(Queue &q)
 {
     q.front = 0;
     q.rear = -1;
 }
-
-// 
 
 bool isEmpty(Queue q)
 {
@@ -67,9 +60,4 @@ void display(Queue q)
         }
         cout << endl;
     }
-}
-int main()
-{
-    cout << "Hello World";
-    return 0;
 }
